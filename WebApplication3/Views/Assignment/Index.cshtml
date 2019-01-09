@@ -46,6 +46,14 @@
                                         <span>@assignment.StartDate  -  @assignment.EndDate</span>
                                     </li>
                                     <li>
+                                        <p><b>Comments:</b></p>
+                                        @foreach (var comment in assignment.Comments)
+                                        {
+
+                                            <p>@comment.Text</p>
+                                        }
+                                    </li>
+                                    <li>
                                         <span class="fa-li">
                                             <h5>
 
@@ -70,16 +78,14 @@
                                             </h5>
                                     </li>
 
-                                    @foreach (var comment in assignment.Comments)
-                                    {
-                                       
-                                    <li><p>@comment.Text</p></li>
-                                    }
 
-                                    </ul>
+
+                                </ul>
                                 <hr>
                                 <div class="row">
-                                    <button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
+                                    <!--<button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
+    -->
+                                    <a href="/Assignment/AddComment/@assignment.AssignmentId" class="btn">Add comment</a>
                                     <!-- TODO: redirect in pagina noua-->
 
                                     <button type="button" class="btn" data-toggle="modal" data-target="#edit-task-modal">Edit</button>
@@ -121,41 +127,48 @@
                                         </span>
                                         <span>@assignment.StartDate  -  @assignment.EndDate</span>
                                     </li>
+
                                     <li>
-                                        <span class="fa-li">
-                                            <h5>
+                                        <p><b>Comments:</b></p>
 
-                                                @if (assignment.Status == 2)
-                                                {
-                                                    <span class="badge badge-warning">
-                                                        In progress
-                                                    </span>
-                                                }
-                                                else if (assignment.Status == 3)
-                                                {
-                                                    <span class="badge badge-success">
-                                                        Completed
-                                                    </span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="badge badge-danger">
-                                                        Not started
-                                                    </span>
-                                                }
-                                            </h5>
+                                        @foreach (var comment in assignment.Comments)
+                                        {
+
+                                            <p>@comment.Text</p>
+                                        }
                                     </li>
-                                    @foreach (var comment in assignment.Comments)
-                                    {
+                                        <li>
+                                            <span class="fa-li">
+                                                <h5>
 
-                                        <li><p>@comment.Text</p></li>
-                                    }
+                                                    @if (assignment.Status == 2)
+                                                    {
+                                                        <span class="badge badge-warning">
+                                                            In progress
+                                                        </span>
+                                                    }
+                                                    else if (assignment.Status == 3)
+                                                    {
+                                                        <span class="badge badge-success">
+                                                            Completed
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge badge-danger">
+                                                            Not started
+                                                        </span>
+                                                    }
+                                                </h5>
+                                        </li>
 
 
-                                </ul>
+                                    </ul>
                                 <hr>
                                 <div class="row">
-                                    <button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
+                                    <!--<button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
+        -->
+                                    <a href="/Assignment/AddComment/@assignment.AssignmentId" class="btn">Add comment</a>
 
                                     <!-- TODO: redirect in pagina noua-->
                                     <button type="button" class="btn" data-toggle="modal" data-target="#edit-task-modal">Edit</button>
@@ -197,6 +210,15 @@
                                         <span>@assignment.StartDate  -  @assignment.EndDate</span>
                                     </li>
                                     <li>
+                                        <p><b>Comments:</b></p>
+
+                                        @foreach (var comment in assignment.Comments)
+                                        {
+
+                                            <p>@comment.Text</p>
+                                        }
+                                    </li>
+                                    <li>
                                         <span class="fa-li">
                                             <h5>
 
@@ -220,18 +242,15 @@
                                                 }
                                             </h5>
                                     </li>
-                                    @foreach (var comment in assignment.Comments)
-                                    {
-
-                                        <li><p>@comment.Text</p></li>
-                                    }
 
 
                                 </ul>
                                 <hr>
                                 <div class="row">
-                                    <button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
-
+                                    <!--<button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
+    -->
+                                    <a href="/Assignment/AddComment/@assignment.AssignmentId" class="btn">Add comment</a>
+                                    
                                     <!-- TODO: redirect in pagina noua-->
                                     <button type="button" class="btn" data-toggle="modal" data-target="#edit-task-modal">Edit</button>
 
