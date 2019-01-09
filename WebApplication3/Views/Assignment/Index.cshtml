@@ -54,7 +54,7 @@
                                         }
                                     </li>
                                     <li>
-                                        <span class="fa-li">
+                                        <span>
                                             <h5>
 
                                                 @if (assignment.Status == 2)
@@ -76,7 +76,26 @@
                                                     </span>
                                                 }
                                             </h5>
-                                    </li>
+                                            </li>
+                                            <li>
+                                            <p>Change status:</p>
+                                            <form method="post" action="/Assignment/ChangeStatus/@assignment.AssignmentId">
+                                                @Html.HttpMethodOverride(HttpVerbs.Put)
+
+                                                <input type="hidden" name="id" value=@assignment.AssignmentId />
+                                                <div class="form-group">
+                                                    <label for="Status">Select status</label>
+                                                    <select id="status" name="status" class="form-control">
+                                                        <option value="">-- Select Status --</option>
+                                                        <option value="1">Not started</option>
+                                                        <option value="2">In progress</option>
+                                                        <option value="3">Completed</option>
+                                                    </select>
+                                                </div>
+
+                                                <button type="submit">Update status</button>
+                                            </form>
+                                            </li>
 
 
 
@@ -137,33 +156,53 @@
                                             <p>@comment.Text</p>
                                         }
                                     </li>
-                                        <li>
-                                            <span class="fa-li">
-                                                <h5>
+                                    <li>
+                                        <span>
+                                            <h5>
 
-                                                    @if (assignment.Status == 2)
-                                                    {
-                                                        <span class="badge badge-warning">
-                                                            In progress
-                                                        </span>
-                                                    }
-                                                    else if (assignment.Status == 3)
-                                                    {
-                                                        <span class="badge badge-success">
-                                                            Completed
-                                                        </span>
-                                                    }
-                                                    else
-                                                    {
-                                                        <span class="badge badge-danger">
-                                                            Not started
-                                                        </span>
-                                                    }
-                                                </h5>
-                                        </li>
+                                                @if (assignment.Status == 2)
+                                                {
+                                                    <span class="badge badge-warning">
+                                                        In progress
+                                                    </span>
+                                                }
+                                                else if (assignment.Status == 3)
+                                                {
+                                                    <span class="badge badge-success">
+                                                        Completed
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge badge-danger">
+                                                        Not started
+                                                    </span>
+                                                }
+                                            </h5>
+                                    </li>
+
+                                    <li>
+                                        <p>Change status:</p>
+                                        <form method="post" action="/Assignment/ChangeStatus/@assignment.AssignmentId">
+                                            @Html.HttpMethodOverride(HttpVerbs.Put)
+
+                                            <input type="hidden" name="id" value=@assignment.AssignmentId />
+                                            <div class="form-group">
+                                                <label for="Status">Select status</label>
+                                                <select id="status" name="status" class="form-control">
+                                                    <option value="">-- Select Status --</option>
+                                                    <option value="1">Not started</option>
+                                                    <option value="2">In progress</option>
+                                                    <option value="3">Completed</option>
+                                                </select>
+                                            </div>
+
+                                            <button type="submit">Update status</button>
+                                        </form>
+                                    </li>
 
 
-                                    </ul>
+                                </ul>
                                 <hr>
                                 <div class="row">
                                     <!--<button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
@@ -219,7 +258,7 @@
                                         }
                                     </li>
                                     <li>
-                                        <span class="fa-li">
+                                        <span>
                                             <h5>
 
                                                 @if (assignment.Status == 2)
@@ -241,6 +280,26 @@
                                                     </span>
                                                 }
                                             </h5>
+                                    </li>
+
+                                    <li>
+                                        <p>Change status:</p>
+                                        <form method="post" action="/Assignment/ChangeStatus/@assignment.AssignmentId">
+                                            @Html.HttpMethodOverride(HttpVerbs.Put)
+
+                                            <input type="hidden" name="id" value=@assignment.AssignmentId />
+                                            <div class="form-group">
+                                                <label for="Status">Select status</label>
+                                                <select id="status" name="status" class="form-control">
+                                                    <option value="">-- Select Status --</option>
+                                                    <option value="1">Not started</option>
+                                                    <option value="2">In progress</option>
+                                                    <option value="3">Completed</option>
+                                                </select>
+                                            </div>
+
+                                            <button type="submit">Update status</button>
+                                        </form>
                                     </li>
 
 

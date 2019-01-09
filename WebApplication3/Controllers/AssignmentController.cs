@@ -139,5 +139,25 @@ namespace WebApplication3.Controllers
                 return View();
             }
         }
+
+        [HttpPut]
+        public ActionResult ChangeStatus(int id, int status)
+        {
+            try
+            {
+                Assignment assignment = db.Assignments.Find(id);
+
+                if (TryUpdateModel(assignment))
+                {
+                    assignment.Status = status;
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
+        }
     }
 }
