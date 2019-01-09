@@ -14,8 +14,9 @@ namespace WebApplication3.Controllers
 
         public ActionResult Index()
         {
-            
-           var projects = from project in db.Projects.Include("Organizer")
+            //Modified
+            var projects = from project in db.Projects.Include("Organizer")
+            //var projects = from project in db.Projects.Include("User")
                            orderby project.Name
                            select project;
             ViewBag.Projects = projects;
@@ -57,6 +58,7 @@ namespace WebApplication3.Controllers
             }
         }
 
+       // [Authorize(Roles = "Organizer,Administrator")]
         public ActionResult Edit(int id)
         {
             Project project = db.Projects.Find(id);
