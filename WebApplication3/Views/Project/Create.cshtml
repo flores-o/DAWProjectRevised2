@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "New project";
+}
+
+
+<section class="pt-4 pb-5 section-top">
+    <br>
+</section>
+<main id="main">
+
+    <section id="buy-tickets" class="section-with-bg wow fadeInUp">
+        <div class="container">
+
+            <div class="section-header">
+                <h2>@ViewBag.Title</h2>
+                <!-- <p>Velit consequatur consequatur inventore iste fugit unde omnis eum aut.</p> -->
+            </div>
+
+
+            <form method="post" action="/Project/Create">
+                <div class="form-group">
+                    <label>Organizer id</label>
+                    <br />
+                    <input type="text" name="OrganizerId" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <br />
+                    <input type="text" name="Name" class="form-control" placeholder="Project name" />
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <br />
+                    <textarea name="Description" placeholder="Description"></textarea>
+                    <br /><br />
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>

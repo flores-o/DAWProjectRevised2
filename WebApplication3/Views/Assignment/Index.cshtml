@@ -1,0 +1,361 @@
+﻿
+@{
+    ViewBag.Title = "Tasks";
+}
+
+<section class="pt-4 pb-5 section-top">
+    <br>
+</section>
+
+<main id="main">
+    <section id="tasks" class="section-with-bg wow fadeInUp">
+        <div class="container">
+            <h3>Project: <a href="projects.html">Project name</a></h3>
+
+            <div class="section-header">
+                <h2>Tasks</h2>
+                <!-- <p>Velit consequatur consequatur inventore iste fugit unde omnis eum aut.</p> -->
+            </div>
+
+            <div class="mb-3">
+                <a href="/Assignment/Create" class="btn btn-primary"><i class="fa fa-plus"></i>Add task</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 left-border-column right-border-column">
+                    <h2 class="text-center task-column-title">Not started</h2>
+
+
+                    @foreach (var assignment in ViewBag.NotStartedAssignments)
+                    {
+                        <div class="card mb-5 mb-lg-3">
+                            <div class="card-body">
+                                <p class="card-price text-center">@assignment.Name</p>
+                                <hr>
+                                <p>@assignment.Description</p>
+
+                                <ul class="fa-ul">
+                                    <li>
+                                        <span class="fa-li"><i class="fa fa-user"></i></span>
+                                        assigned to:
+                                        <a href="">@assignment.AssigneeId</a>
+                                    </li>
+                                    <li>
+                                        <span class="fa-li">
+                                            <i class="fa fa-clock-o"></i>
+                                        </span>
+                                        <span>@assignment.StartDate  -  @assignment.EndDate</span>
+                                    </li>
+                                    <li>
+                                        <span class="fa-li">
+                                            <h5>
+
+                                                @if (assignment.Status == 2)
+                                                {
+                                                    <span class="badge badge-warning">
+                                                        In progress
+                                                    </span>
+                                                }
+                                                else if (assignment.Status == 3)
+                                                {
+                                                    <span class="badge badge-success">
+                                                        Completed
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge badge-danger">
+                                                        Not started
+                                                    </span>
+                                                }
+                                            </h5>
+                                    </li>
+                                </ul>
+                                <hr>
+                                <div class="row">
+                                    <button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
+                                    <!-- TODO: redirect in pagina noua-->
+
+                                    <button type="button" class="btn" data-toggle="modal" data-target="#edit-task-modal">Edit</button>
+
+
+                                    <form method="post" action="/Assignment/Delete/@assignment.AssignmentId">
+                                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                                        <button type="submit" class="btn btn-danger" style="background:#dc3545">Delete</button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+
+                <div class="col-lg-4 left-border-column right-border-column">
+                    <h2 class="text-center task-column-title">In progress</h2>
+
+
+                    @foreach (var assignment in ViewBag.InProgressAssignments)
+                    {
+                        <div class="card mb-5 mb-lg-3">
+                            <div class="card-body">
+                                <p class="card-price text-center">@assignment.Name</p>
+                                <hr>
+                                <p>@assignment.Description</p>
+
+                                <ul class="fa-ul">
+                                    <li>
+                                        <span class="fa-li"><i class="fa fa-user"></i></span>
+                                        assigned to:
+                                        <a href="">@assignment.AssigneeId</a>
+                                    </li>
+                                    <li>
+                                        <span class="fa-li">
+                                            <i class="fa fa-clock-o"></i>
+                                        </span>
+                                        <span>@assignment.StartDate  -  @assignment.EndDate</span>
+                                    </li>
+                                    <li>
+                                        <span class="fa-li">
+                                            <h5>
+
+                                                @if (assignment.Status == 2)
+                                                {
+                                                    <span class="badge badge-warning">
+                                                        In progress
+                                                    </span>
+                                                }
+                                                else if (assignment.Status == 3)
+                                                {
+                                                    <span class="badge badge-success">
+                                                        Completed
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge badge-danger">
+                                                        Not started
+                                                    </span>
+                                                }
+                                            </h5>
+                                    </li>
+                                </ul>
+                                <hr>
+                                <div class="row">
+                                    <button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
+
+                                    <!-- TODO: redirect in pagina noua-->
+                                    <button type="button" class="btn" data-toggle="modal" data-target="#edit-task-modal">Edit</button>
+
+
+                                    <form method="post" action="/Assignment/Delete/@assignment.AssignmentId">
+                                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                                        <button type="submit" class="btn btn-danger" style="background:#dc3545">Delete</button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="col-lg-4 left-border-column right-border-column">
+                    <h2 class="text-center task-column-title">Completed</h2>
+
+
+                    @foreach (var assignment in ViewBag.CompletedAssignments)
+                    {
+                        <div class="card mb-5 mb-lg-3">
+                            <div class="card-body">
+                                <p class="card-price text-center">@assignment.Name</p>
+                                <hr>
+                                <p>@assignment.Description</p>
+
+                                <ul class="fa-ul">
+                                    <li>
+                                        <span class="fa-li"><i class="fa fa-user"></i></span>
+                                        assigned to:
+                                        <a href="">@assignment.AssigneeId</a>
+                                    </li>
+                                    <li>
+                                        <span class="fa-li">
+                                            <i class="fa fa-clock-o"></i>
+                                        </span>
+                                        <span>@assignment.StartDate  -  @assignment.EndDate</span>
+                                    </li>
+                                    <li>
+                                        <span class="fa-li">
+                                            <h5>
+
+                                                @if (assignment.Status == 2)
+                                                {
+                                                    <span class="badge badge-warning">
+                                                        In progress
+                                                    </span>
+                                                }
+                                                else if (assignment.Status == 3)
+                                                {
+                                                    <span class="badge badge-success">
+                                                        Completed
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge badge-danger">
+                                                        Not started
+                                                    </span>
+                                                }
+                                            </h5>
+                                    </li>
+                                </ul>
+                                <hr>
+                                <div class="row">
+                                    <button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
+
+                                    <!-- TODO: redirect in pagina noua-->
+                                    <button type="button" class="btn" data-toggle="modal" data-target="#edit-task-modal">Edit</button>
+
+
+
+                                    <form method="post" action="/Assignment/Delete/@assignment.AssignmentId">
+                                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                                        <button type="submit" class="btn btn-danger" style="background:#dc3545">Delete</button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+
+                <!-- Modal View task -->
+                <div id="view-task-modal" class="modal fade">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Task name</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Description:</p>
+                                <p>Assignee:</p>
+                                <ul>
+                                    <li>Project: Project</li>
+                                </ul>
+                                <p><b>Comments:</b></p>
+                                <p>TODO</p>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+                <!-- Modal Edit task Form -->
+                <div id="edit-task-modal" class="modal fade">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit task</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST" action="#">
+                                    <div class="form-group">
+                                        <label>Project id</label>
+                                        <br />
+                                        <input type="number" name="ProjectId" class="form-control" />
+                                    </div>
+
+                                    <!--
+                                    TODO: select only for edit
+                                    <div class="form-group">
+                                        <label>Assigned to</label>
+                                        <br />
+                                        <input type="number" name="AssigneeId" class="form-control"/>
+                                    </div>
+                                    -->
+
+
+                                    <div class="form-group">
+                                        <label for="Status">Select status</label>
+                                        <select id="status" name="Status" class="form-control">
+                                            <option value="">-- Select Status --</option>
+                                            <option value="1">Not started</option>
+                                            <option value="2">In progress</option>
+                                            <option value="3">Completed</option>
+                                        </select>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <br />
+                                        <input type="text" name="Name" class="form-control" placeholder="Assignment name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Start date </label>
+                                        <div class='input-group date datetimepicker'>
+                                            <input type='text' class="form-control" name="StartDate" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>End date </label>
+                                        <div class='input-group date datetimepicker'>
+                                            <input type='text' class="form-control" name="EndDate" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <br />
+                                        <textarea name="Description" placeholder="Description"></textarea>
+                                        <br /><br />
+                                    </div>
+
+
+
+                                    <!-- <div class="form-group">
+                                         <label for="Assignee">Assign to</label>
+                                         <select id="assignee" name="Assignee" class="form-control">
+                                             <option value="">-- Select User --</option>
+                                             <option value="user1">User 1</option>
+                                             <option value="user2">User 1</option>
+                                             <option value="user3">User 1</option>
+                                         </select>
+                                     </div>
+                                     -->
+
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+    </section>
+</main>
+
+
+@section scripts
+{
+    $(document).ready(function () {
+    $(function () {
+    $('.datetimepicker').datetimepicker();
+    });
+    });
+}

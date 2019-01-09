@@ -1,0 +1,287 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<!--==========================
+  Intro Section
+============================-->
+<section id="intro">
+    <div class="intro-container wow fadeIn">
+        <h1 class="mb-4 pb-0">Manage<br><span>Tasks</span> for you <br>and your <span>team</span></h1>
+        <!-- <p class="mb-4 pb-0">10-12 December, Downtown Conference Center, New York</p> -->
+
+        <a href="#about" class="about-btn scrollto">View more details</a>
+    </div>
+</section>
+
+<main id="main">
+
+    <!--==========================
+      About Section
+    ============================-->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2>About</h2>
+                    <p>
+                        This is a project for managing tasks of small teams created by 3rd year students at the University of Bucharest.
+                        <br> Note: this is a prototype of the project for the university, not a commercial product.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <h3>Authors:</h3>
+                    <ul>
+                        <li>Diana Marusic</li>
+                        <li>Oana Florescu</li>
+                    </ul>
+                </div>
+                <!-- <div class="col-lg-3">
+                  <h3>When</h3>
+                  <p>Monday to Wednesday<br>10-12 December</p>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!--==========================
+      Screenshots Section
+    ============================-->
+    <section id="screenshots" class="wow fadeInUp">
+        <div class="container">
+            <div class="section-header">
+                <h2>Screenshots</h2>
+                <p>Here are some screenshots of the app</p>
+            </div>
+
+            <div class="row">
+                <!-- <div class="col-lg-4 col-md-6">
+                  <div class="screenshot">
+                    <img src="~/Content/img/screenshots/1.png" alt="Screenshot 1" class="img-fluid">
+                    <div class="details">
+                      <h3><a href="screenshot-details.html">Login page</a></h3>
+                    </div>
+                  </div>
+                </div> -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="screenshot">
+                        <img src="~/Content/img/screenshots/2.png" alt="Screenshot 2" class="img-fluid">
+                        <div class="details">
+                            <h3><a href="screenshot-details.html">Register page</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="screenshot">
+                        <img src="~/Content/img/screenshots/3.png" alt="Screenshot 3" class="img-fluid">
+                        <div class="details">
+                            <h3><a href="screenshot-details.html">Projects page</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="screenshot">
+                        <img src="~/Content/img/screenshots/4.png" alt="Screenshot 1" class="img-fluid">
+                        <div class="details">
+                            <h3><a href="screenshot-details.html">Tasks page</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--==========================
+      Gallery Section
+    ============================-->
+    <section id="gallery" class="wow fadeInUp">
+
+        <div class="container">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <p>Check our gallery for the screenshots of the app</p>
+            </div>
+        </div>
+
+        <div class="owl-carousel gallery-carousel">
+            <a href="~/Content/img/screenshots/1.png" class="venobox" data-gall="gallery-carousel"><img src="~/Content/img/screenshots/1.png" alt=""></a>
+            <a href="~/Content/img/screenshots/2.png" class="venobox" data-gall="gallery-carousel"><img src="~/Content/img/screenshots/2.png" alt=""></a>
+            <a href="~/Content/img/screenshots/3.png" class="venobox" data-gall="gallery-carousel"><img src="~/Content/img/screenshots/3.png" alt=""></a>
+            <a href="~/Content/img/screenshots/4.png" class="venobox" data-gall="gallery-carousel"><img src="~/Content/img/screenshots/4.png" alt=""></a>
+            <a href="~/Content/img/screenshots/1.png" class="venobox" data-gall="gallery-carousel"><img src="~/Content/img/screenshots/1.png" alt=""></a>
+            <a href="~/Content/img/screenshots/2.png" class="venobox" data-gall="gallery-carousel"><img src="~/Content/img/screenshots/2.png" alt=""></a>
+            <a href="~/Content/img/screenshots/3.png" class="venobox" data-gall="gallery-carousel"><img src="~/Content/img/screenshots/3.png" alt=""></a>
+            <a href="~/Content/img/screenshots/4.png" class="venobox" data-gall="gallery-carousel"><img src="~/Content/img/screenshots/4.png" alt=""></a>
+
+        </div>
+
+    </section>
+
+    <!--==========================
+      Buy Ticket Section
+    ============================-->
+    <section id="buy-tickets" class="section-with-bg wow fadeInUp">
+        <div class="container">
+
+            <div class="section-header">
+                <h2>Buy the app</h2>
+                <!-- <p></p> -->
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <h5 class="card-title text-muted text-uppercase text-center">Free trial</h5>
+                            <h6 class="card-price text-center">$0</h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li><span class="fa-li"><i class="fa fa-check"></i></span>Free for personal use or evaluation</li>
+                                <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Technical support</li>
+                                <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Make profit</li>
+                            </ul>
+                            <hr>
+                            <div class="text-center">
+                                <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="standard-access">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <h5 class="card-title text-muted text-uppercase text-center">Standard Access</h5>
+                            <h6 class="card-price text-center">$250</h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li><span class="fa-li"><i class="fa fa-check"></i></span>Regular Seating</li>
+                                <li><span class="fa-li"><i class="fa fa-check"></i></span>Coffee Break</li>
+                                <li><span class="fa-li"><i class="fa fa-check"></i></span>Custom Badge</li>
+                                <li><span class="fa-li"><i class="fa fa-check"></i></span>Community Access</li>
+                                <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Workshop Access</li>
+                                <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>After Party</li>
+                            </ul>
+                            <hr>
+                            <div class="text-center">
+                                <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="pro-access">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pro Tier -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-muted text-uppercase text-center">Premium Access</h5>
+                            <h6 class="card-price text-center">$350</h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li><span class="fa-li"><i class="fa fa-check"></i></span>Regular Seating</li>
+                                <li><span class="fa-li"><i class="fa fa-check"></i></span>Coffee Break</li>
+                                <li><span class="fa-li"><i class="fa fa-check"></i></span>Custom Badge</li>
+                                <li><span class="fa-li"><i class="fa fa-check"></i></span>Community Access</li>
+                                <li><span class="fa-li"><i class="fa fa-check"></i></span>Workshop Access</li>
+                                <li><span class="fa-li"><i class="fa fa-check"></i></span>After Party</li>
+                            </ul>
+                            <hr>
+                            <div class="text-center">
+                                <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="premium-access">Buy Now</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Modal Order Form -->
+        <div id="buy-ticket-modal" class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Buy Tickets</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="#">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="your-name" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="your-email" placeholder="Your Email">
+                            </div>
+                            <div class="form-group">
+                                <select id="ticket-type" name="ticket-type" class="form-control">
+                                    <option value="">-- Select Your Ticket Type --</option>
+                                    <option value="standard-access">Standard Access</option>
+                                    <option value="pro-access">Pro Access</option>
+                                    <option value="premium-access">Premium Access</option>
+                                </select>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn">Buy Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+    </section>
+
+    <!--==========================
+      F.A.Q Section
+    ============================-->
+    <section id="faq" class="wow fadeInUp">
+
+        <div class="container">
+
+            <div class="section-header">
+                <h2>F.A.Q </h2>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <ul id="faq-list">
+
+                        <li>
+                            <a data-toggle="collapse" class="collapsed" href="#faq1">How to add a task? <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq1" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    For adding tasks, please go to the tasks page....
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#faq2" class="collapsed">How  to add a project? <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq2" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    For adding a project, please go to the projects page
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#faq3" class="collapsed">How to create an account? <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq3" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    Please press the "Login" button in the right upper corner of the app, and then click the link "Don't have an account? Sign up here"
+                                </p>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
