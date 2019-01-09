@@ -14,9 +14,7 @@ namespace WebApplication3.Controllers
 
         public ActionResult Index()
         {
-            //Modified
             var projects = from project in db.Projects.Include("Organizer")
-            //var projects = from project in db.Projects.Include("User")
                            orderby project.Name
                            select project;
             ViewBag.Projects = projects;
@@ -57,7 +55,7 @@ namespace WebApplication3.Controllers
                 return View();
             }
         }
-
+       //To do
        // [Authorize(Roles = "Organizer,Administrator")]
         public ActionResult Edit(int id)
         {
@@ -66,6 +64,8 @@ namespace WebApplication3.Controllers
             return View();
         }
 
+
+        // [Authorize(Roles = "Organizer,Administrator")]
         [HttpPut]
         public ActionResult Edit(int id, Project requestProject)
         {

@@ -69,7 +69,14 @@
                                                 }
                                             </h5>
                                     </li>
-                                </ul>
+
+                                    @foreach (var comment in assignment.Comments)
+                                    {
+                                       
+                                    <li><p>@comment.Text</p></li>
+                                    }
+
+                                    </ul>
                                 <hr>
                                 <div class="row">
                                     <button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
@@ -138,6 +145,13 @@
                                                 }
                                             </h5>
                                     </li>
+                                    @foreach (var comment in assignment.Comments)
+                                    {
+
+                                        <li><p>@comment.Text</p></li>
+                                    }
+
+
                                 </ul>
                                 <hr>
                                 <div class="row">
@@ -206,6 +220,13 @@
                                                 }
                                             </h5>
                                     </li>
+                                    @foreach (var comment in assignment.Comments)
+                                    {
+
+                                        <li><p>@comment.Text</p></li>
+                                    }
+
+
                                 </ul>
                                 <hr>
                                 <div class="row">

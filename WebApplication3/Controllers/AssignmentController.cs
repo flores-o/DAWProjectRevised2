@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,15 +23,15 @@ namespace WebApplication3.Controllers
                            select assignment;
             */
 
-            var notStartedAssignments = from assignment in db.Assignments
+            var notStartedAssignments = from assignment in db.Assignments.Include("Comments")
                                         where assignment.Status == NOT_STARTED_STATUS
                                         select assignment;
 
-            var inProgressAssignments = from assignment in db.Assignments
+            var inProgressAssignments = from assignment in db.Assignments.Include("Comments")
                                         where assignment.Status == IN_PROGRESS_STATUS
                                         select assignment;
 
-            var completedAssignments = from assignment in db.Assignments
+            var completedAssignments = from assignment in db.Assignments.Include("Comments")
                                        where assignment.Status == COMPLETED_STATUS
                                        select assignment;
 
@@ -108,6 +109,35 @@ namespace WebApplication3.Controllers
             db.Assignments.Remove(assignment);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // Adaugare comentariu
+        public ActionResult AddComment(int id)
+        {
+            ViewBag.AssignmentId = id;
+            ViewBag.AuthorId = User.Identity.GetUserId();
+
+            Assignment assignment = db.Assignments.Find(id);
+            ViewBag.TaskName = assignment.Name;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(Comment comment)
+        {
+            try
+            {
+                db.Comments.Add(comment);
+                db.SaveChanges();
+
+                return Redirect("/Assignment/Index");
+                //return Redirect("/Assignment/Show/" + comment.AssignmentId);
+            }
+            catch (Exception e)
+            {
+                ViewBag.AssignmentId = comment.AssignmentId;
+                return View();
+            }
         }
     }
 }

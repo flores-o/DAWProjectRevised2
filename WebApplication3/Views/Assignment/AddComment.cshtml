@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Add Comment";
+}
+
+<h2>Add Comment</h2>
+
+
+<section class="pt-4 pb-5 section-top">
+    <br>
+</section>
+<main id="main">
+
+    <section id="buy-tickets" class="section-with-bg wow fadeInUp">
+        <div class="container">
+
+            <div class="section-header">
+                <h2>@ViewBag.Title</h2>
+            </div>
+
+            <form method="post" action="/Assignment/AddComment">
+                <input type="hidden" name="AuthorId" class="form-control" value=@ViewBag.AuthorId />
+                <input type="hidden" name="AssignmentId" class="form-control" value=@ViewBag.AssignmentId />
+                <p>Add comment to Task: <b>@ViewBag.TaskName</b></p>
+                <div class="form-group">
+                    <label>Add Comment:</label>
+                    <br />
+                    <textarea name="Text"></textarea>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
