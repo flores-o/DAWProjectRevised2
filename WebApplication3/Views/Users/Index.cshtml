@@ -18,38 +18,38 @@
             </div>
 
             <!--<div class="mb-3">
-                <a href="/User/Create" class="btn btn-primary"><i class="fa fa-plus"></i>Add User</a>
-            </div>
-            <div class="row pb-3">
-                -->
+        <a href="/User/Create" class="btn btn-primary"><i class="fa fa-plus"></i>Add User</a>
+    </div>
+    <div class="row pb-3">
+        -->
+            <div class="col-lg-4">
 
                 @foreach (var User in ViewBag.UsersList)
                 {
-                    <div class="col-lg-4">
-                        <div class="card mb-5 mb-lg-0">
-                            <div class="card-body">
-                                <p class="card-price text-center">@User.Name</p>
-                                <hr>
-                                <h5 class="card-title text-muted text-uppercase text-center">
-                                    @User.Email
-                                </h5>
+                    <div class="card mb-5 mb-lg-3 mb-3">
+                        <div class="card-body">
+                            <p class="card-price text-center">@User.Name</p>
+                            <hr>
+                            <h5 class="card-title text-muted text-uppercase text-center">
+                                @User.Email
+                            </h5>
 
-                                <hr>
-                                <div class="text-center">
-                                    <!--<button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="standard-access">
-                                        View details
-                                    </button>-->
-                                    <a class="btn" href="/User/Show/@User.Id">View details</a>
-                                    <br />
+                            <hr>
+                            <div class="text-center">
+                                <!--<button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="standard-access">
+                            View details
+                        </button>-->
+                                <a class="btn" href="/User/Show/@User.Id">View details</a>
+                                <br />
 
-                                </div>
                             </div>
                         </div>
                     </div>
+
                 }
             </div>
-
         </div>
+
     </section>
 
 
