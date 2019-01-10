@@ -39,7 +39,7 @@ namespace WebApplication3.Controllers
             ViewBag.NotStartedAssignments = notStartedAssignments;
             ViewBag.InProgressAssignments = inProgressAssignments;
             ViewBag.CompletedAssignments = completedAssignments;
-
+            ViewBag.LoggedUserId = User.Identity.GetUserId();
 
             return View();
         }

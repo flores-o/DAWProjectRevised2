@@ -50,7 +50,25 @@
                                         @foreach (var comment in assignment.Comments)
                                         {
 
-                                            <p>@comment.Text</p>
+                                        <span class="fa-li">
+                                            <i class="fa fa-list"></i>
+                                        </span>
+                                        <form method="post" action="/Comment/Delete/@comment.CommentId">
+                                            @Html.HttpMethodOverride(HttpVerbs.Delete)
+                                            @comment.Text
+
+                                            @if(comment.AuthorId== ViewBag.LoggedUserId)
+                                            {
+
+                                            <a href="/Comment/Edit/@comment.CommentId">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+
+                                            <button type="submit"><i class="fa fa-trash"></i></button>
+
+                                            }
+                                        </form>
+
                                         }
                                     </li>
                                     <li>
@@ -149,11 +167,28 @@
 
                                     <li>
                                         <p><b>Comments:</b></p>
-
                                         @foreach (var comment in assignment.Comments)
                                         {
 
-                                            <p>@comment.Text</p>
+                                            <span class="fa-li">
+                                                <i class="fa fa-list"></i>
+                                            </span>
+                                            <form method="post" action="/Comment/Delete/@comment.CommentId">
+                                                @Html.HttpMethodOverride(HttpVerbs.Delete)
+                                                @comment.Text
+
+                                                @if (comment.AuthorId == ViewBag.LoggedUserId)
+                                                {
+
+                                                    <a href="/Comment/Edit/@comment.CommentId">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+
+                                                    <button type="submit"><i class="fa fa-trash"></i></button>
+
+                                                }
+                                            </form>
+
                                         }
                                     </li>
                                     <li>
@@ -250,11 +285,28 @@
                                     </li>
                                     <li>
                                         <p><b>Comments:</b></p>
-
                                         @foreach (var comment in assignment.Comments)
                                         {
 
-                                            <p>@comment.Text</p>
+                                            <span class="fa-li">
+                                                <i class="fa fa-list"></i>
+                                            </span>
+                                            <form method="post" action="/Comment/Delete/@comment.CommentId">
+                                                @Html.HttpMethodOverride(HttpVerbs.Delete)
+                                                @comment.Text
+
+                                                @if (comment.AuthorId == ViewBag.LoggedUserId)
+                                                {
+
+                                                    <a href="/Comment/Edit/@comment.CommentId">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+
+                                                    <button type="submit"><i class="fa fa-trash"></i></button>
+
+                                                }
+                                            </form>
+
                                         }
                                     </li>
                                     <li>
@@ -309,7 +361,7 @@
                                     <!--<button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
     -->
                                     <a href="/Assignment/AddComment/@assignment.AssignmentId" class="btn">Add comment</a>
-                                    
+
                                     <!-- TODO: redirect in pagina noua-->
                                     <button type="button" class="btn" data-toggle="modal" data-target="#edit-task-modal">Edit</button>
 

@@ -4,23 +4,65 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<section class="pt-4 pb-5 section-top">
+    <br>
+</section>
+<main id="main">
 
-<div>
-    <h4>Team</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <section id="buy-tickets" class="section-with-bg wow fadeInUp">
+        <div class="container">
+            <h2>Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <div>
+                <h4>Team</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
 
-    </dl>
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+                </dl>
+                <p><b>Members:</b></p>
+                <ul>
+                    @foreach (var member in ViewBag.Members)
+                    {
+                        <li>@member.Name</li>
+
+                    }
+                </ul>
+
+
+                <h3>Add members:</h3>
+
+                <form method="post" action="/Team/AddMember/@Model.TeamId">
+                    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+                    <input type="hidden" name="teamId" value=@Model.TeamId />
+
+                    <div class="form-group">
+                        <label for="userId">Select user</label>
+                        <select id="userId" name="userId" class="form-control">
+                            <option value="">-- Select User --</option>
+
+                            @foreach (var user in ViewBag.Users)
+                            {
+                            <option value=@user.Id >@user.Id @user.Name (@user.Email)</option>
+                            }
+                        </select>
+                    </div>
+                    <input type="submit" value="Add" class="btn btn-default" />
+
+                </form>
+
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.TeamId }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TeamId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </section>
+</main>
