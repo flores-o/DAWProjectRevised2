@@ -10,8 +10,8 @@
 <main id="main">
     <section id="tasks" class="section-with-bg wow fadeInUp">
         <div class="container">
-            <h3>Project: <a href="projects.html">Project name</a></h3>
-
+            <!--<h3>Project: <a href="projects.html">Project name</a></h3>
+        -->
             <div class="section-header">
                 <h2>Tasks</h2>
                 <!-- <p>Velit consequatur consequatur inventore iste fugit unde omnis eum aut.</p> -->
@@ -50,24 +50,24 @@
                                         @foreach (var comment in assignment.Comments)
                                         {
 
-                                        <span class="fa-li">
-                                            <i class="fa fa-list"></i>
-                                        </span>
-                                        <form method="post" action="/Comment/Delete/@comment.CommentId">
-                                            @Html.HttpMethodOverride(HttpVerbs.Delete)
-                                            @comment.Text
+                                            <span class="fa-li">
+                                                <i class="fa fa-list"></i>
+                                            </span>
+                                            <form method="post" action="/Comment/Delete/@comment.CommentId">
+                                                @Html.HttpMethodOverride(HttpVerbs.Delete)
+                                                @comment.Text
 
-                                            @if(comment.AuthorId== ViewBag.LoggedUserId)
-                                            {
+                                                @if (comment.AuthorId == ViewBag.LoggedUserId)
+                                                {
 
-                                            <a href="/Comment/Edit/@comment.CommentId">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
+                                                    <a href="/Comment/Edit/@comment.CommentId">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
 
-                                            <button type="submit"><i class="fa fa-trash"></i></button>
+                                                    <button type="submit"><i class="fa fa-trash"></i></button>
 
-                                            }
-                                        </form>
+                                                }
+                                            </form>
 
                                         }
                                     </li>
@@ -94,26 +94,26 @@
                                                     </span>
                                                 }
                                             </h5>
-                                            </li>
-                                            <li>
-                                            <p>Change status:</p>
-                                            <form method="post" action="/Assignment/ChangeStatus/@assignment.AssignmentId">
-                                                @Html.HttpMethodOverride(HttpVerbs.Put)
+                                    </li>
+                                    <li>
+                                        <p>Change status:</p>
+                                        <form method="post" action="/Assignment/ChangeStatus/@assignment.AssignmentId">
+                                            @Html.HttpMethodOverride(HttpVerbs.Put)
 
-                                                <input type="hidden" name="id" value=@assignment.AssignmentId />
-                                                <div class="form-group">
-                                                    <label for="Status">Select status</label>
-                                                    <select id="status" name="status" class="form-control">
-                                                        <option value="">-- Select Status --</option>
-                                                        <option value="1">Not started</option>
-                                                        <option value="2">In progress</option>
-                                                        <option value="3">Completed</option>
-                                                    </select>
-                                                </div>
+                                            <input type="hidden" name="id" value=@assignment.AssignmentId />
+                                            <div class="form-group">
+                                                <label for="Status">Select status</label>
+                                                <select id="status" name="status" class="form-control">
+                                                    <option value="">-- Select Status --</option>
+                                                    <option value="1">Not started</option>
+                                                    <option value="2">In progress</option>
+                                                    <option value="3">Completed</option>
+                                                </select>
+                                            </div>
 
-                                                <button type="submit">Update status</button>
-                                            </form>
-                                            </li>
+                                            <button type="submit">Update status</button>
+                                        </form>
+                                    </li>
 
 
 
@@ -121,7 +121,7 @@
                                 <hr>
                                 <div class="row">
                                     <!--<button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
-    -->
+                            -->
                                     <a href="/Assignment/AddComment/@assignment.AssignmentId" class="btn">Add comment</a>
                                     <!-- TODO: redirect in pagina noua-->
 
@@ -241,7 +241,7 @@
                                 <hr>
                                 <div class="row">
                                     <!--<button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
-        -->
+                            -->
                                     <a href="/Assignment/AddComment/@assignment.AssignmentId" class="btn">Add comment</a>
 
                                     <!-- TODO: redirect in pagina noua-->
@@ -359,7 +359,7 @@
                                 <hr>
                                 <div class="row">
                                     <!--<button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
-    -->
+                            -->
                                     <a href="/Assignment/AddComment/@assignment.AssignmentId" class="btn">Add comment</a>
 
                                     <!-- TODO: redirect in pagina noua-->
@@ -420,13 +420,13 @@
                                     </div>
 
                                     <!--
-                                    TODO: select only for edit
-                                    <div class="form-group">
-                                        <label>Assigned to</label>
-                                        <br />
-                                        <input type="number" name="AssigneeId" class="form-control"/>
-                                    </div>
-                                    -->
+                            TODO: select only for edit
+                            <div class="form-group">
+                                <label>Assigned to</label>
+                                <br />
+                                <input type="number" name="AssigneeId" class="form-control"/>
+                            </div>
+                            -->
 
 
                                     <div class="form-group">
@@ -478,15 +478,15 @@
 
 
                                     <!-- <div class="form-group">
-                                         <label for="Assignee">Assign to</label>
-                                         <select id="assignee" name="Assignee" class="form-control">
-                                             <option value="">-- Select User --</option>
-                                             <option value="user1">User 1</option>
-                                             <option value="user2">User 1</option>
-                                             <option value="user3">User 1</option>
-                                         </select>
-                                     </div>
-                                     -->
+                                 <label for="Assignee">Assign to</label>
+                                 <select id="assignee" name="Assignee" class="form-control">
+                                     <option value="">-- Select User --</option>
+                                     <option value="user1">User 1</option>
+                                     <option value="user2">User 1</option>
+                                     <option value="user3">User 1</option>
+                                 </select>
+                             </div>
+                             -->
 
                                     <div class="form-group text-center">
                                         <button type="submit" class="btn btn-primary">Update</button>
@@ -498,7 +498,7 @@
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
 
-    </section>
+</section>
 </main>
 
 
