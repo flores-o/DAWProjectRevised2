@@ -37,7 +37,12 @@
                                     <li>
                                         <span class="fa-li"><i class="fa fa-user"></i></span>
                                         assigned to:
-                                        <a href="">@assignment.AssigneeId</a>
+                                        <p>@assignment.AssigneeId</p>
+
+                                        @if (@assignment.Assignee != null)
+                                        {
+                                            <a href="">@assignment.Assignee.Name</a>
+                                        }
                                     </li>
                                     <li>
                                         <span class="fa-li">
@@ -57,7 +62,7 @@
                                                 @Html.HttpMethodOverride(HttpVerbs.Delete)
                                                 @comment.Text
 
-                                                @if (comment.AuthorId == ViewBag.LoggedUserId)
+                                                @if (comment.AuthorId == ViewBag.LoggedUserId || ViewBag.UserIsAdmin == true)
                                                 {
 
                                                     <a href="/Comment/Edit/@comment.CommentId">
@@ -121,8 +126,11 @@
                                 <hr>
                                 <div class="row">
                                     <!--<button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
-                            -->
+    -->
                                     <a href="/Assignment/AddComment/@assignment.AssignmentId" class="btn">Add comment</a>
+
+                                    <a href="/Assignment/AssignTask/@assignment.AssignmentId" class="btn">Assign task</a>
+
                                     <!-- TODO: redirect in pagina noua-->
 
                                     <button type="button" class="btn" data-toggle="modal" data-target="#edit-task-modal">Edit</button>
@@ -156,7 +164,12 @@
                                     <li>
                                         <span class="fa-li"><i class="fa fa-user"></i></span>
                                         assigned to:
-                                        <a href="">@assignment.AssigneeId</a>
+                                        <p>@assignment.AssigneeId</p>
+                                        @if (@assignment.Assignee != null)
+                                        {
+                                            <a href="">@assignment.Assignee.Name</a>
+                                        }
+
                                     </li>
                                     <li>
                                         <span class="fa-li">
@@ -177,7 +190,7 @@
                                                 @Html.HttpMethodOverride(HttpVerbs.Delete)
                                                 @comment.Text
 
-                                                @if (comment.AuthorId == ViewBag.LoggedUserId)
+                                                @if (comment.AuthorId == ViewBag.LoggedUserId || ViewBag.UserIsAdmin == true)
                                                 {
 
                                                     <a href="/Comment/Edit/@comment.CommentId">
@@ -241,8 +254,9 @@
                                 <hr>
                                 <div class="row">
                                     <!--<button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
-                            -->
+    -->
                                     <a href="/Assignment/AddComment/@assignment.AssignmentId" class="btn">Add comment</a>
+                                    <a href="/Assignment/AssignTask/@assignment.AssignmentId" class="btn">Assign task</a>
 
                                     <!-- TODO: redirect in pagina noua-->
                                     <button type="button" class="btn" data-toggle="modal" data-target="#edit-task-modal">Edit</button>
@@ -275,7 +289,12 @@
                                     <li>
                                         <span class="fa-li"><i class="fa fa-user"></i></span>
                                         assigned to:
-                                        <a href="">@assignment.AssigneeId</a>
+                                        <p>@assignment.AssigneeId</p>
+
+                                        @if (@assignment.Assignee != null)
+                                        {
+                                            <a href="">@assignment.Assignee.Name</a>
+                                        }
                                     </li>
                                     <li>
                                         <span class="fa-li">
@@ -295,7 +314,7 @@
                                                 @Html.HttpMethodOverride(HttpVerbs.Delete)
                                                 @comment.Text
 
-                                                @if (comment.AuthorId == ViewBag.LoggedUserId)
+                                                @if (comment.AuthorId == ViewBag.LoggedUserId || ViewBag.UserIsAdmin==true)
                                                 {
 
                                                     <a href="/Comment/Edit/@comment.CommentId">
@@ -359,8 +378,9 @@
                                 <hr>
                                 <div class="row">
                                     <!--<button type="button" class="btn" data-toggle="modal" data-target="#view-task-modal">View details</button>
-                            -->
+    -->
                                     <a href="/Assignment/AddComment/@assignment.AssignmentId" class="btn">Add comment</a>
+                                    <a href="/Assignment/AssignTask/@assignment.AssignmentId" class="btn">Assign task</a>
 
                                     <!-- TODO: redirect in pagina noua-->
                                     <button type="button" class="btn" data-toggle="modal" data-target="#edit-task-modal">Edit</button>

@@ -23,15 +23,15 @@ namespace WebApplication3.Controllers
                            select assignment;
             */
 
-            var notStartedAssignments = from assignment in db.Assignments.Include("Comments")
+            var notStartedAssignments = from assignment in db.Assignments.Include("Comments").Include("Assignee")
                                         where assignment.Status == NOT_STARTED_STATUS
                                         select assignment;
 
-            var inProgressAssignments = from assignment in db.Assignments.Include("Comments")
+            var inProgressAssignments = from assignment in db.Assignments.Include("Comments").Include("Assignee")
                                         where assignment.Status == IN_PROGRESS_STATUS
                                         select assignment;
 
-            var completedAssignments = from assignment in db.Assignments.Include("Comments")
+            var completedAssignments = from assignment in db.Assignments.Include("Comments").Include("Assignee")
                                        where assignment.Status == COMPLETED_STATUS
                                        select assignment;
 
@@ -40,6 +40,9 @@ namespace WebApplication3.Controllers
             ViewBag.InProgressAssignments = inProgressAssignments;
             ViewBag.CompletedAssignments = completedAssignments;
             ViewBag.LoggedUserId = User.Identity.GetUserId();
+            if(User.IsInRole("Administrator")) {
+                ViewBag.UserIsAdmin = true;
+            }
 
             return View();
         }
@@ -51,10 +54,14 @@ namespace WebApplication3.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Organizer,Administrator")]
+
         public ActionResult Create()
         {
             return View();
         }
+
+        [Authorize(Roles = "Organizer,Administrator")]
 
         [HttpPost]
         public ActionResult Create(Assignment assignment)
@@ -76,12 +83,16 @@ namespace WebApplication3.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrator")]
+
         public ActionResult Edit(int id)
         {
             Assignment assignment = db.Assignments.Find(id);
             ViewBag.Assignment = assignment;
             return View();
         }
+
+        [Authorize(Roles = "Administrator")]
 
         [HttpPut]
         public ActionResult Edit(int id, Assignment requestAssignment)
@@ -101,6 +112,8 @@ namespace WebApplication3.Controllers
                 return View();
             }
         }
+
+        [Authorize(Roles = "Organizer,Administrator")]
 
         [HttpDelete]
         public ActionResult Delete(int id)
@@ -159,5 +172,42 @@ namespace WebApplication3.Controllers
                 return View();
             }
         }
+
+
+        [Authorize(Roles = "Organizer,Administrator")]
+        public ActionResult AssignTask(int id)
+        {
+            ViewBag.AssignmentId = id;
+
+            Assignment assignment = db.Assignments.Find(id);
+            ViewBag.TaskName = assignment.Name;
+            var users = from cat in db.Users select cat;
+            ViewBag.Users = users;
+
+            return View();
+        }
+
+
+        [Authorize(Roles = "Organizer,Administrator")]
+
+        [HttpPut]
+        public ActionResult AssignTask(int assignmentId, string userId)
+        {
+            try
+            {
+                Assignment assignment = db.Assignments.Find(assignmentId);
+                if (TryUpdateModel(assignment))
+                {
+                    assignment.AssigneeId = userId;
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace WebApplication3.Controllers
     public class ProjectController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        
         public ActionResult Index()
         {
             var projects = from project in db.Projects.Include("Organizer")
@@ -37,14 +38,25 @@ namespace WebApplication3.Controllers
         [HttpPost]
         public ActionResult Create(Project project)
         {
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
             try
-            {
+            {   
                 Console.WriteLine(project);
-                //Modified
+                
                 project.OrganizerId = User.Identity.GetUserId();
 
                 db.Projects.Add(project);
                 db.SaveChanges();
+
+                ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+                var userRole = user.Roles.FirstOrDefault();
+
+                var role = db.Roles.Find(userRole.RoleId);
+                
+                if ( role.Name != "Administrator")
+                {
+                    UserManager.AddToRole(User.Identity.GetUserId(), "Organizer");
+                }
                 return RedirectToAction("Index");
             }
             catch (Exception e)
