@@ -25,7 +25,7 @@
                 @foreach (var project in ViewBag.Projects)
                 {
                     <div class="col-lg-4">
-                        <div class="card mb-5 mb-lg-0">
+                        <div class="card mb-5 mb-lg-3">
                             <div class="card-body">
                                 <p class="card-price text-center">@project.Name</p>
                                 <hr>
@@ -51,6 +51,10 @@
                                     </button>-->
                                     <a class="btn" href="/Project/Show/@project.ProjectId">View details</a>
                                     <br />
+                                    <form method="post" action="/Project/Delete/@project.ProjectId">
+                                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                                        <button type="submit" class="btn btn-danger" style="background:#dc3545">Delete</button>
+                                    </form>
 
                                 </div>
                             </div>

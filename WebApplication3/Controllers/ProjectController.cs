@@ -55,36 +55,63 @@ namespace WebApplication3.Controllers
                 return View();
             }
         }
-       //To do
-       // [Authorize(Roles = "Organizer,Administrator")]
-        public ActionResult Edit(int id)
+       //Modified
+        [Authorize(Roles = "Organizer,Administrator")]        public ActionResult Edit(int id)
         {
             Project project = db.Projects.Find(id);
             ViewBag.Project = project;
-            return View();
+
+            if (project.OrganizerId == User.Identity.GetUserId() ||
+           User.IsInRole("Administrator"))
+            {
+                return View(project);
+            }
+            else
+            {
+                TempData["message"] = "Nu aveti dreptul sa faceti modificari asupra unui proiect care nu va apartine!";
+          return RedirectToAction("Index");
+            }
         }
 
 
-        // [Authorize(Roles = "Organizer,Administrator")]
+        [Authorize(Roles = "Organizer,Administrator")]
         [HttpPut]
         public ActionResult Edit(int id, Project requestProject)
         {
             try
             {
-                Project project = db.Projects.Find(id);
-                if (TryUpdateModel(project))
+                if (ModelState.IsValid)
                 {
-                    project.Name = requestProject.Name;
-                    db.SaveChanges();
+                    Project project = db.Projects.Find(id);
+                    if (project.OrganizerId == User.Identity.GetUserId() ||
+                   User.IsInRole("Administrator"))
+                    {
+                        if (TryUpdateModel(project))
+                        {
+                            project.Name = requestProject.Name;
+                            project.Description = requestProject.Description;
+                            db.SaveChanges();
+                            TempData["message"] = "Proiectul a fost modificat!";
+                        }
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        TempData["message"] = "Nu aveti dreptul sa faceti modificari asupra unui proiect care nu va apartine!";
+                     return RedirectToAction("Index");
+                    }
                 }
-                return RedirectToAction("Index");
+                else
+                {
+                    return View();
+                }
+
             }
             catch (Exception e)
             {
                 return View();
             }
-        }
-
+        }
         [HttpDelete]
         public ActionResult Delete(int id)
         {
